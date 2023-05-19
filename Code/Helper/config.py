@@ -4,34 +4,27 @@ def main():
 # -------------------
 # IMPORTS - NEED TO CONDENSE
 # -------------------
-
-import tensorflow as tf
-from tensorflow.keras.preprocessing.image import img_to_array, load_img
-import os
-import matplotlib.pyplot as plt
-import seaborn as sns
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-from tensorflow.keras.losses import BinaryCrossentropy
-from tensorflow.keras.optimizers import Adam
-from tensorflow.keras.metrics import BinaryAccuracy, AUC, Precision, Recall, TrueNegatives, TruePositives, FalsePositives, FalseNegatives
-
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from functools import partial
 import sys
-
 from tensorflow.keras.utils import set_random_seed
-from tensorflow.keras.preprocessing.image import img_to_array, load_img
-from tensorflow.keras.layers import Dense, Dropout, Flatten, Conv2D, MaxPooling2D, BatchNormalization, Input, Rescaling
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.callbacks import EarlyStopping, ReduceLROnPlateau
 from tensorflow.keras.preprocessing import image_dataset_from_directory
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense, Dropout, Flatten, Conv2D, MaxPooling2D, BatchNormalization, Input, Rescaling
+from tensorflow.keras.callbacks import EarlyStopping, ReduceLROnPlateau
 from tensorflow.keras.losses import BinaryCrossentropy
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.metrics import BinaryAccuracy, AUC, Precision, Recall, TrueNegatives, TruePositives, FalsePositives, FalseNegatives
+
+# NOTE: do we use these?
+import os
+import seaborn as sns
+from functools import partial
+from tensorflow.keras.preprocessing.image import img_to_array, load_img
+
+# do we need this when we have all the "from tf import _"?
+import tensorflow as tf 
 
 # -------------------
 # PLOTTING VARIABLES
@@ -57,6 +50,7 @@ axis_title_font = {
 # Figure Sizes
 default_fig_size = (7, 7)
 subplot_fig_size = (14, 7)
+subplot2_fig_size = (21, 7)
 
 # Color Settings
 alpha_value = 0.5
@@ -79,7 +73,7 @@ def graph_me(model, list_of_metrics=[]):
     model -> NN model
         The NN model from which its history data can be extracted for plotting  
 
-    list_of_metrics -> str
+    list_of_metrics -> list of str
         The list of metric names to include in the plotting. Eg. ["acc"]
     
     Returns
@@ -90,17 +84,19 @@ def graph_me(model, list_of_metrics=[]):
     '''
     # Configure figure and plots
     total_graphs = 1 + len(list_of_metrics)
-    fig, ax = plt.subplots(1, total_graphs, figsize=(total_graphs*5, 5))
+    fig, ax = plt.subplots(1, total_graphs, figsize=subplot2_fig_size)
 
     # Create data lists for graphing to loop over
     titles = ["Loss History"]
     data = ["loss"]
     val_data = ["val_loss"]
+
     for metric in list_of_metrics:
         titles.append(f"{metric.title()} History")
         data.append(metric)
         val_data.append(f"val_{metric}")
 
+    # Graphs the data
     for i in range(len(ax)):
         ax[i].set_title(titles[i], **title_font)
         ax[i].set_xlabel("Epoch", **axis_title_font)
@@ -113,6 +109,24 @@ def graph_me(model, list_of_metrics=[]):
     return
 
 def get_true_and_pred_labels(model, validation_dataset, return_class_names=False):
+    ''' 
+    Summary:
+
+    model -> 
+        desc
+
+    validation_dataset -> 
+        desc
+
+    return_class_names -> 
+        desc
+
+    Returns
+        None
+    
+    Example
+        get_true_and_pred_labels(_)
+    '''
     # Get dataset as array
     dataset_as_array = list(validation_dataset.as_numpy_iterator())
     
@@ -143,6 +157,18 @@ def get_true_and_pred_labels(model, validation_dataset, return_class_names=False
     
     
 def get_class_distributions(directory):
+    ''' 
+    Summary:
+
+    directory -> 
+        desc
+
+    Returns
+        None
+    
+    Example
+        get_class_distributions(_)
+    '''
     class_dist = {}
 
     for category in os.listdir(directory):
@@ -157,6 +183,18 @@ def get_class_distributions(directory):
 
 
 def get_sample_images(directory):
+    ''' 
+    Summary:
+
+    directory -> 
+        desc
+
+    Returns
+        None
+    
+    Example
+        get_sample_images(_)
+    '''
     samples = {}
     
     for category in os.listdir(directory):
