@@ -43,13 +43,12 @@ title_font = {
 }
 
 label_font = {
-    'size': 20,
-    'weight': 'bold'
+    'fontsize': 15
 }
 
 axis_title_font = {
     'size': 15,
-    'weight': 'medium'
+    'weight': 'bold'
 }
 
 # Plot Settings
@@ -103,12 +102,12 @@ def graph_me(model, list_of_metrics=[]):
         val_data.append(f"val_{metric}")
 
     for i in range(len(ax)):
-        ax[i].set_title(titles[i], fontsize=14)
-        ax[i].set_xlabel("Epoch")
-        ax[i].set_ylabel("Score")
+        ax[i].set_title(titles[i], **title_font)
+        ax[i].set_xlabel("Epoch", **axis_title_font)
+        ax[i].set_ylabel("Score", **axis_title_font)
         ax[i].plot(model.history[data[i]], label="train")
         ax[i].plot(model.history[val_data[i]], label="test")
-        ax[i].legend(loc='best')
+        ax[i].legend(loc='best', **label_font)
     plt.tight_layout()
     plt.show()
     return
