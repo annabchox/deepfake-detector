@@ -16,19 +16,22 @@ In this project, we aim to combat the spread of AI risks by developing a deep le
 ## Folder Directory
 |Folder Name|File Name|File Description|
 |---        |---      |---             |
-|Images|| This folder contains all the images used in the presentation
-|Data|| This folder is empty because data is not uploaded; but is where relative filepaths should be
 |Code|| This folder contains all code for the project
-|Images|`_.png`| Image: 
 |Code/Helper|| This folder contains all the helper scripts.
-|Code/Main|| This folder contains all the main modeling files.
-|Code/Results|| This folder contains the summary results from the models.
 |Code/Helper|`config.py`| This files contains all the helper functions and variables used in the `-NN.ipynb` files
 |Code/Helper|`intial_csv_export_script.ipynb`| This script is used to create the first instance of the `model_scores.csv`; don't run again
-|Code/Main|`Anna-NN.ipynb`| This file contains modeling work from Anna
-|Code/Main|`Chris-NN.ipynb`| This file contains modeling work from Chris
-|Code/Main|`Reid-NN.ipynb`| This file contains modeling work from Reid
+|Code/Main|| This folder contains all the main modeling files.
+|Code/Main/Testing|| This folders contains modeling work related to testing
+|Code/Main/Testing|`Best_Models_NN.ipynb`| This file contains the best trained model applied to testing data + graphing efforts 
+|Code/Main/Training|| This folders contains modeling work related to training and validation
+|Code/Main/Training|`Anna_NN.ipynb`| This file contains modeling work from Anna
+|Code/Main/Training|`Chris_NN.ipynb`| This file contains modeling work from Chris
+|Code/Main/Training|`Reid_NN.ipynb`| This file contains modeling work from Reid
+|Code/Results|| This folder contains the summary results from the models.
 |Code/Results|`model_scores.csv`| This file contains the summary of model results
+|Images|| This folder contains all the images used in the presentation
+|Images|`_.png`| Image: 
+|Data|| This folder is empty because data is not uploaded; but is where relative filepaths should be
 
 ----
 ## Data Collection and Preprocessing
