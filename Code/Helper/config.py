@@ -327,7 +327,7 @@ def get_sample_images(directory):
 
 
 def model_scores_to_csv(models, history_list, model_name):
-       '''
+    '''
     Append the last epoch scores of a model to a CSV file.
 
     Parameters:
@@ -344,15 +344,11 @@ def model_scores_to_csv(models, history_list, model_name):
         None
 
     Example:
-        model_scores_to_csv(['model1', 'model2'], [history1, history2], 'model3')
+        model_scores_to_csv(['model1', 'model2'], [h1, h2], 'model_1')
     '''
         
     #Specified Columns:
-    columns = ['train_loss', 'train_acc', 'train_precision', 'train_recall', 'train_auc',
-               'train_fn', 'train_fp','train_tn', 'train_tp',
-               'val_loss', 'val_acc', 'val_precision','val_recall', 'val_auc',
-               'val_fn', 'val_fp',
-               'val_tn', 'val_tp']
+    columns = ['train_loss','train_acc','train_precision','train_recall','train_auc','train_fn','train_fp','train_tn','train_tp','val_loss', 'val_acc','val_precision','val_recall','val_auc','val_fn','val_fp','val_tn','val_tp']
     
     if 'model_eval.csv' not in os.listdir('../deepfake-detector/Code/Results/'):
         df = pd.DataFrame(columns=columns, index=['models'])
@@ -377,6 +373,7 @@ def model_scores_to_csv(models, history_list, model_name):
     df.to_csv('../deepfake-detector/Code/Results/model_eval.csv', mode='a', header = False)
 
     return
+
 
 
 if __name__ == "__main__":
