@@ -55,8 +55,7 @@ subplot2_fig_size = (21, 7)
 # Color Settings
 alpha_value = 0.5
 palette = 'colorblind'
-cmap = 'colorblind'
-
+colors = ['blue', 'purple', 'orange', 'magenta']
 
 
 # -------------------
@@ -325,6 +324,60 @@ def get_sample_images(directory):
             samples.update({category: sample})
             
     return samples
+
+
+def model_scores_to_csv(models, history_list, model_name):
+       '''
+    Append the last epoch scores of a model to a CSV file.
+
+    Parameters:
+        models : list
+            List of model names.
+
+        history_list : list
+            List of history objects containing training history.
+
+        model_name : str
+            Name of the model to be appended.
+
+    Returns:
+        None
+
+    Example:
+        model_scores_to_csv(['model1', 'model2'], [history1, history2], 'model3')
+    '''
+        
+    #Specified Columns:
+    columns = ['train_loss', 'train_acc', 'train_precision', 'train_recall', 'train_auc',
+               'train_fn', 'train_fp','train_tn', 'train_tp',
+               'val_loss', 'val_acc', 'val_precision','val_recall', 'val_auc',
+               'val_fn', 'val_fp',
+               'val_tn', 'val_tp']
+    
+    if 'model_eval.csv' not in os.listdir('../deepfake-detector/Code/Results/'):
+        df = pd.DataFrame(columns=columns, index=['models'])
+    
+        df.to_csv('../deepfake-detector/Code/Results/model_eval.csv')
+    
+    # Get the last epoch values from the history dictionary
+    last_epoch_values = [list(values)[-1] for values in history_list.history.values()]
+
+    # Create a dictionary with the model scores and the model name as the index
+    model_scores = {col: [val] for col, val in zip(columns, last_epoch_values)}
+
+    # Set the model name as the index in the dictionary
+    model_scores['models'] = model_name
+
+    # Create a temporary dataframe with the model scores
+    df = pd.DataFrame(model_scores)
+    
+    df.set_index('models', inplace = True, drop = True)
+
+    # Append the model scores to the CSV file
+    df.to_csv('../deepfake-detector/Code/Results/model_eval.csv', mode='a', header = False)
+
+    return
+
 
 if __name__ == "__main__":
     main()
