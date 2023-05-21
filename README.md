@@ -1,5 +1,5 @@
 # Deepfake-Detector
-Python deep learning project (CNN) that trains 5 separate models to test the detection power against real and fake images. Dataset taken from [OpenForensics](https://zenodo.org/record/5528418#.ZGaehnbMKHv) (dataset is not uploaded in this repo due to size.)
+Python deep learning project (CNN) that trains 11 separate models to test the detection power against real and fake images. Dataset taken from [OpenForensics](https://zenodo.org/record/5528418#.ZGaehnbMKHv) (dataset is not uploaded in this repo due to size.)
 
 ----
 ## Executive Summary
