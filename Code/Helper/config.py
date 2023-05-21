@@ -177,7 +177,7 @@ def graph_me(model, list_of_metrics=[]):
     '''
     Returns a subplots graphing history of indicated metrics (min default is loss).
 
-    model -> NN model
+    model -> NN model history
         The NN model from which its history data can be extracted for plotting  
 
     list_of_metrics -> list of str
