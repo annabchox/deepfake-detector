@@ -72,7 +72,8 @@ standard_metrics = [
     FalsePositives(), 
     FalseNegatives()
 ]
-
+column_names = ["train_loss", "train_acc", "train_precision", "train_recall", "train_auc", "train_fn", "train_fp", "train_tn", "train_tp", 
+                "val_loss", "val_acc", "val_precision", "val_recall", "val_auc", "val_fn", "val_fp", "val_tn", "val_tp"]
 
 
 # -------------------

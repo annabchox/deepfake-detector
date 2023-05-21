@@ -20,16 +20,19 @@ In this project, we aim to combat the spread of AI risks by developing a deep le
 |Code/Helper|| This folder contains all the helper scripts.
 |Code/Helper|`config.py`| This files contains all the helper functions and variables used in the `-NN.ipynb` files
 |Code/Helper|`intial_csv_export_script.ipynb`| This script is used to create the first instance of the `model_scores.csv`; don't run again
+|Code/PretrainedModel|| This folder contains all the pre-trained models.
+|Code/PretrainedModel|`deepfake_model_tutorial.ipynb`| This file contains the tutorial on how to use pre-trained models.
+|Code/PretrainedModel|`effnet_deepfake_model.zip`| This file contains the efficient_net model itself.
 |Code/Main|| This folder contains all the main modeling files.
 |Code/Main/Testing|| This folders contains modeling work related to testing
 |Code/Main/Testing|`Best_Models_NN.ipynb`| This file contains the best trained model applied to testing data + graphing efforts 
 |Code/Main/Training|| This folders contains modeling work related to training and validation
-|Code/Main/Training|`Anna_NN.ipynb`| This file contains modeling work from Anna
-|Code/Main/Training|`Chris_NN.ipynb`| This file contains modeling work from Chris
-|Code/Main/Training|`Reid_NN.ipynb`| This file contains modeling work from Reid
+|Code/Main/Training|`Anna_NN.ipynb`| This file contains modeling work from Anna.
+|Code/Main/Training|`Chris_NN.ipynb`| This file contains modeling work from Chris.
+|Code/Main/Training|`Reid_NN.ipynb`| This file contains modeling work from Reid.
 |Code/Results|| This folder contains the summary results from the models.
-|Code/Results|`model_scores.csv`| This file contains the summary of model results
-|Images|| This folder contains all the images used in the presentation
+|Code/Results|`model_eval.csv`| This file contains the summary of model results.
+|Images|| This folder contains all the images used in the presentation.
 |Images|`_.png`| Image: 
 |Data|| This folder is empty because data is not uploaded; but is where relative filepaths should be
 
