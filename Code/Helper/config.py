@@ -72,7 +72,8 @@ standard_metrics = [
     FalsePositives(), 
     FalseNegatives()
 ]
-
+column_names = ["train_loss", "train_acc", "train_precision", "train_recall", "train_auc", "train_fn", "train_fp", "train_tn", "train_tp", 
+                "val_loss", "val_acc", "val_precision", "val_recall", "val_auc", "val_fn", "val_fp", "val_tn", "val_tp"]
 
 
 # -------------------
@@ -176,7 +177,7 @@ def graph_me(model, list_of_metrics=[]):
     '''
     Returns a subplots graphing history of indicated metrics (min default is loss).
 
-    model -> NN model
+    model -> NN model history
         The NN model from which its history data can be extracted for plotting  
 
     list_of_metrics -> list of str
