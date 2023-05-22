@@ -34,7 +34,7 @@ def get_prediction(model, image):
     else:
         return f"Fake, Confidence: {str(1 - predicted_prob)[:4]}"
 
-# generate selection of sample images
+# generate selection of sample images 
 @st.cache_data()
 def load_images():
   real_images = ["images/Real/" + x for x in os.listdir("images/Real/")]
@@ -52,6 +52,8 @@ images = load_images()
 def game_mode():
   st.header("Game Mode")
   st.subheader("Can you beat the model?")
+
+  # from streamlit_image_select docs - https://github.com/jrieke/streamlit-image-select
   selected_image = image_select(
     "Click on an image below to guess if it is real of fake:", 
     images,
@@ -89,10 +91,9 @@ def detector_mode():
 
   st.header("Detector Mode")
   st.subheader("Upload an Image to Make a Prediction")
-  # upload an image
-  uploaded_image = st.file_uploader("Upload your own image to test the model:", type=['jpg', 'jpeg', 'png'])
 
-  # st.file_uploader("Or upload your own cat!", type=["jpg", "jpeg", "png"])
+  # upload an image
+  uploaded_image = st.file_uploader("Upload your own image to test the model:", type=['jpg', 'jpeg'])
 
   # when an image is uploaded, display image and run inference
   if uploaded_image is not None:
