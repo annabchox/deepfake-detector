@@ -4,6 +4,7 @@ import pickle
 import os
 from PIL import Image, ImageOps
 from streamlit_image_select import image_select
+from tensorflow.keras.models import model_from_json
 import time
 
 
@@ -15,9 +16,14 @@ st.title("Deepfake Detector:")
 # function to load and cache pretrained model
 @st.cache_resource()
 def load_model():
-  with open('deepfake_predictor.pkl', 'rb') as f:
-    model = pickle.load(f)
-  return model
+    path = "../dffnetv2B0"
+    # Model reconstruction from JSON file
+    with open(path + '.json', 'r') as f:
+        model = model_from_json(f.read())
+    model.load_weights(path + '.h5')
+    return model
+
+ 
 
 # function to preprocess an image and get a prediction from the model
 def get_prediction(model, image):
@@ -70,20 +76,20 @@ def game_mode():
     st.text("You guessed:")
     st.subheader("*Real*")
     st.text("The Deepfake Detector model guessed...")
-    time.sleep(3)
+    time.sleep(1)
     st.subheader(f"*{prediction}*")
     st.text("The truth is...")
-    time.sleep(2)
+    time.sleep(1)
     st.subheader(f"***It's {true_label}!***")
 
   if st.button("It's Fake"):
     st.text("You guessed:")
     st.subheader("*Fake*")
     st.text("The Deepfake Detector model guessed...")
-    time.sleep(3)
+    time.sleep(1)
     st.subheader(f"*{prediction}*")
     st.text("The truth is...")
-    time.sleep(2)
+    time.sleep(1)
     st.subheader(f"***It's {true_label}!***")
 
 
